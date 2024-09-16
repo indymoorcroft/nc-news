@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById } from "./apiCalls";
+import { getArticleById } from "../../apiCalls";
+import { CommentList } from "./CommentList";
 
 export const ArticlePage = () => {
   const [article, setArticle] = useState({});
@@ -35,13 +36,16 @@ export const ArticlePage = () => {
   }
 
   return (
-    <article className="article">
-      <h1>{article.title}</h1>
-      <button className="topic">{article.topic}</button>
-      <img className="articleImg" src={article.article_img_url} />
-      <p>written by: {article.author}</p>
-      <p className="date">date posted: {article.created_at}</p>
-      <p className="articleBody">{article.body}</p>
-    </article>
+    <>
+      <article className="article">
+        <h1>{article.title}</h1>
+        <button className="topic">{article.topic}</button>
+        <img className="articleImg" src={article.article_img_url} />
+        <p>written by: {article.author}</p>
+        <p className="date">date posted: {article.created_at}</p>
+        <p className="articleBody">{article.body}</p>
+      </article>
+      <CommentList article_id={article_id} />
+    </>
   );
 };
