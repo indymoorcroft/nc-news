@@ -39,10 +39,12 @@ export const ArticlePage = () => {
     <>
       <article className="article">
         <h1>{article.title}</h1>
-        <button className="topic">{article.topic}</button>
+        <p className="topic">{article.topic}</p>
         <img className="articleImg" src={article.article_img_url} />
-        <p>written by: {article.author}</p>
-        <p className="date">date posted: {article.created_at}</p>
+        <div className="articleDetails">
+          <p>written by: {article.author}</p>
+          <p>date posted: {article.created_at}</p>
+        </div>
         <p className="articleBody">{article.body}</p>
       </article>
       <CommentList article_id={article_id} />
