@@ -21,3 +21,19 @@ export const getCommentsById = (article_id) => {
     return data;
   });
 };
+
+export const patchVote = (article_id, clicked) => {
+  const patchBody = {
+    inc_votes: 1,
+  };
+
+  if (clicked) {
+    patchBody.inc_votes = -1;
+  }
+
+  return newsApi
+    .patch(`/articles/${article_id}`, patchBody)
+    .then(({ article }) => {
+      return article;
+    });
+};
