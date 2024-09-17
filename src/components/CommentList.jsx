@@ -17,7 +17,13 @@ export const CommentList = ({ article_id }) => {
       <h2>Comments:</h2>
       <ul className="flexbox">
         {articleComments.map((comment) => {
-          return <CommentCard key={comment.comment_id} comment={comment} />;
+          return (
+            <CommentCard
+              key={comment.comment_id}
+              comment={comment}
+              setArticleComments={setArticleComments}
+            />
+          );
         })}
       </ul>
       <CommentForm

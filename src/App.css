@@ -94,9 +94,15 @@ h1 {
   border: 2px solid lightcoral;
 }
 
-.commentBody {
+.comment-body {
   display: flex;
-  margin-left: 8px;
+  justify-content: space-between;
+  margin: 1px 8px;
+}
+
+.comment-button {
+  height: 50%;
+  margin-top: 5px;
 }
 
 .commentDetails {
