@@ -116,3 +116,16 @@ h1 {
 .buttonClicked {
   background-color: rgba(1, 255, 1, 0.664);
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid orange;
+  padding: 8px;
+}
+
+.comment-submit {
+  width: 15%;
+  margin-top: 8px;
+  padding: 6px;
+}
