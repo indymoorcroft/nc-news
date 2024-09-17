@@ -5,8 +5,14 @@ body {
 
 header {
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
   border: 1px solid green;
+  padding: 10px;
+}
+
+nav {
+  font-size: 32px;
+  justify-self: center;
 }
 
 .user {
