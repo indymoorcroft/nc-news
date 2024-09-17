@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getCommentsById } from "../../apiCalls";
+import { getCommentsById } from "../apiCalls";
 import { CommentCard } from "./CommentCard";
 
 export const CommentList = ({ article_id }) => {

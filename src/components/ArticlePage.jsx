@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById } from "../../apiCalls";
+import { getArticleById } from "../apiCalls";
 import { CommentList } from "./CommentList";
+import { ArticleVotes } from "./ArticleVotes";
 
 export const ArticlePage = () => {
   const [article, setArticle] = useState({});
@@ -47,6 +48,7 @@ export const ArticlePage = () => {
         </div>
         <p className="articleBody">{article.body}</p>
       </article>
+      <ArticleVotes votes={article.votes} article_id={article_id} />
       <CommentList article_id={article_id} />
     </>
   );
