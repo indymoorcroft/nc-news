@@ -37,3 +37,11 @@ export const patchVote = (article_id, clicked) => {
       return article;
     });
 };
+
+export const postComment = (postBody, article_id) => {
+  return newsApi
+    .post(`/articles/${article_id}/comments`, postBody)
+    .then(({ data: { comment } }) => {
+      return comment;
+    });
+};

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getCommentsById } from "../apiCalls";
 import { CommentCard } from "./CommentCard";
+import { CommentForm } from "./CommentForm";
 
 export const CommentList = ({ article_id }) => {
   const [articleComments, setArticleComments] = useState([]);
@@ -19,6 +20,11 @@ export const CommentList = ({ article_id }) => {
           return <CommentCard key={comment.comment_id} comment={comment} />;
         })}
       </ul>
+      <CommentForm
+        comments={articleComments}
+        setComments={setArticleComments}
+        article_id={article_id}
+      />
     </section>
   );
 };
