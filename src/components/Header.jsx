@@ -6,6 +6,7 @@ export const Header = () => {
 
   return (
     <header>
+      <nav>🏠</nav>
       <p className="user">
         logged in as: <em>{loggedInUser.username}</em>
       </p>
