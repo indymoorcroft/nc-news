@@ -25,12 +25,17 @@ export const CommentList = ({ article_id }) => {
   }
 
   if (isError) {
-    return <p>Comments not found</p>;
+    return <p>Comments could not be loaded</p>;
   }
 
   return (
     <section>
       <h2>Comments:</h2>
+      <CommentForm
+        comments={articleComments}
+        setComments={setArticleComments}
+        article_id={article_id}
+      />
       <ul className="flexbox">
         {articleComments.map((comment) => {
           return (
@@ -42,11 +47,6 @@ export const CommentList = ({ article_id }) => {
           );
         })}
       </ul>
-      <CommentForm
-        comments={articleComments}
-        setComments={setArticleComments}
-        article_id={article_id}
-      />
     </section>
   );
 };

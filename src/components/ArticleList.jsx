@@ -4,11 +4,12 @@ import { getAllArticles } from "../apiCalls";
 import { ArticleCard } from "./ArticleCard";
 import { SortBy } from "./SortBy";
 import { Expandable } from "./Expandable";
+import { ErrorComponent } from "./ErrorComponent";
 
 export const ArticleList = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const topicQuery = searchParams.get("topic");
@@ -26,7 +27,7 @@ export const ArticleList = () => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setIsError(true);
+        setError(err);
       });
   }, [topicQuery, sortByQuery, orderQuery]);
 
@@ -34,34 +35,39 @@ export const ArticleList = () => {
     return <p>Loading...</p>;
   }
 
-  if (isError) {
-    return <p>Articles not found</p>;
-  }
-
   const handleClick = () => {
     setSearchParams();
   };
 
   return (
-    <section>
-      <Expandable>
-        <SortBy searchParams={searchParams} setSearchParams={setSearchParams} />
-      </Expandable>
-      <ul className="container">
-        {articles.map((article) => {
-          return (
-            <ArticleCard
-              key={article.article_id}
-              article={article}
+    <div>
+      {error ? (
+        <ErrorComponent message={error} setSearchParams={setSearchParams} />
+      ) : (
+        <section>
+          <Expandable>
+            <SortBy
               searchParams={searchParams}
               setSearchParams={setSearchParams}
             />
-          );
-        })}
-      </ul>
-      {searchParams ? (
-        <button onClick={handleClick}>view all articles</button>
-      ) : null}
-    </section>
+          </Expandable>
+          <ul className="container">
+            {articles.map((article) => {
+              return (
+                <ArticleCard
+                  key={article.article_id}
+                  article={article}
+                  searchParams={searchParams}
+                  setSearchParams={setSearchParams}
+                />
+              );
+            })}
+          </ul>
+          {searchParams ? (
+            <button onClick={handleClick}>view all articles</button>
+          ) : null}{" "}
+        </section>
+      )}
+    </div>
   );
 };
