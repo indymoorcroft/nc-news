@@ -17,6 +17,8 @@ export const ArticleCard = ({ article, searchParams, setSearchParams }) => {
         posted by: <b>{article.author}</b>
       </p>
       <p>date posted: {date}</p>
+      <p>votes: {article.votes}</p>
+      <p>comment count: {article.comment_count}</p>
       <Link to={`/articles/${article.article_id}`}>Learn more</Link>
     </li>
   );

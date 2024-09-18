@@ -1,19 +1,24 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { getAllArticles } from "../apiCalls";
 import { ArticleCard } from "./ArticleCard";
-import { useSearchParams } from "react-router-dom";
+import { SortBy } from "./SortBy";
+import { Expandable } from "./Expandable";
 
 export const ArticleList = () => {
   const [articles, setArticles] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const topicQuery = searchParams.get("topic");
-  const params = { params: { topic: topicQuery } };
+  const sortByQuery = searchParams.get("sort_by");
+  const orderQuery = searchParams.get("order");
+  const params = {
+    params: { topic: topicQuery, sort_by: sortByQuery, order: orderQuery },
+  };
 
   useEffect(() => {
-    setIsLoading(true);
     getAllArticles(params)
       .then(({ articles }) => {
         setIsLoading(false);
@@ -23,14 +28,14 @@ export const ArticleList = () => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, [topicQuery]);
+  }, [topicQuery, sortByQuery, orderQuery]);
 
   if (isLoading) {
     return <p>Loading...</p>;
   }
 
   if (isError) {
-    return <p>Bad request</p>;
+    return <p>Articles not found</p>;
   }
 
   const handleClick = () => {
@@ -39,6 +44,9 @@ export const ArticleList = () => {
 
   return (
     <section>
+      <Expandable>
+        <SortBy searchParams={searchParams} setSearchParams={setSearchParams} />
+      </Expandable>
       <ul className="container">
         {articles.map((article) => {
           return (
