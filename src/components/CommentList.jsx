@@ -5,12 +5,28 @@ import { CommentForm } from "./CommentForm";
 
 export const CommentList = ({ article_id }) => {
   const [articleComments, setArticleComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    getCommentsById(article_id).then(({ comments }) => {
-      setArticleComments(comments);
-    });
+    getCommentsById(article_id)
+      .then(({ comments }) => {
+        setIsLoading(false);
+        setArticleComments(comments);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setIsError(true);
+      });
   }, []);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Comments not found</p>;
+  }
 
   return (
     <section>
