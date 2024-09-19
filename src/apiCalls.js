@@ -22,6 +22,12 @@ export const getCommentsById = (article_id) => {
   });
 };
 
+export const getAllTopics = () => {
+  return newsApi.get(`/topics`).then(({ data }) => {
+    return data;
+  });
+};
+
 export const patchVote = (article_id, clicked) => {
   const patchBody = {
     inc_votes: 1,

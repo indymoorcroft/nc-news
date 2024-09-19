@@ -21,7 +21,7 @@ export const CommentList = ({ article_id }) => {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p>Loading comments</p>;
   }
 
   if (isError) {

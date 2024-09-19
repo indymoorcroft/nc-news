@@ -4,6 +4,7 @@ import { getArticleById } from "../apiCalls";
 import { CommentList } from "./CommentList";
 import { ArticleVotes } from "./ArticleVotes";
 import { ErrorComponent } from "./ErrorComponent";
+import { Loading } from "./Loading";
 
 export const ArticlePage = () => {
   const [article, setArticle] = useState({});
@@ -30,7 +31,7 @@ export const ArticlePage = () => {
   }
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   // if (isError) {
