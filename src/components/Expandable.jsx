@@ -9,7 +9,7 @@ export const Expandable = ({ children }) => {
 
   return (
     <>
-      <button onClick={toggleOpen}>
+      <button onClick={toggleOpen} className="sort-by">
         {isOpen ? "Sort by 🔼" : "Sort By 🔽"}
       </button>
       {isOpen ? children : null}
