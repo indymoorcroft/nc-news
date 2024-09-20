@@ -17,7 +17,9 @@ export const ArticleCard = ({ article, searchParams, setSearchParams }) => {
       <button className="topic" onClick={handleClick} name={article.topic}>
         <b>{article.topic}</b>
       </button>
-      <img className="article-card-img" src={article.article_img_url} />
+      <Link to={`/articles/${article.article_id}`}>
+        <img className="article-card-img" src={article.article_img_url} />
+      </Link>
       <div className="article-card-info">
         <p>
           👤 <b>{article.author}</b>

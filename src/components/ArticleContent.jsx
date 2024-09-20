@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const ArticleContent = ({ article }) => {
   if (article.created_at) {
     const timeStamp = Date.parse(article.created_at);
@@ -8,13 +10,15 @@ export const ArticleContent = ({ article }) => {
   return (
     <article className="article">
       <h1>{article.title}</h1>
-      <p className="topic">{article.topic}</p>
-      <img className="articleImg" src={article.article_img_url} />
-      <div className="articleDetails">
+      <Link to={`/?topic=${article.topic}`} className="article-topic">
+        <b>{article.topic}</b>
+      </Link>
+      <img className="article-img" src={article.article_img_url} />
+      <div className="article-details">
         <p>👤 {article.author}</p>
         <p>posted: {article.created_at}</p>
       </div>
-      <p className="articleBody">{article.body}</p>
+      <p className="article-body">{article.body}</p>
     </article>
   );
 };
