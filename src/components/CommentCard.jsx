@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { deleteComment } from "../apiCalls";
 import { ErrorComponent } from "./ErrorComponent";
+import { secondsToString } from "../functions";
 
 export const CommentCard = ({ comment, setArticleComments }) => {
   const [isDeleting, setIsDeleting] = useState(false);
@@ -32,7 +33,10 @@ export const CommentCard = ({ comment, setArticleComments }) => {
     return <p>deleting comment...</p>;
   }
 
-  const date = comment.created_at.slice(0, 10);
+  const getSeconds = Math.floor(Date.parse(comment.created_at) / 1000);
+  const currSeconds = Math.floor(+new Date() / 1000);
+  const seconds = currSeconds - getSeconds;
+  const timeSinceComment = secondsToString(seconds);
 
   return (
     <div>
@@ -55,9 +59,7 @@ export const CommentCard = ({ comment, setArticleComments }) => {
           </div>
           <div className="commentDetails">
             <p>{comment.author}</p>
-            <p>
-              date posted: <b>{date}</b>
-            </p>
+            {timeSinceComment ? <p>{timeSinceComment} ago</p> : <p>just now</p>}
           </div>
         </li>
       )}

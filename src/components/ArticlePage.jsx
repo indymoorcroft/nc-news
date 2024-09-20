@@ -5,6 +5,7 @@ import { CommentList } from "./CommentList";
 import { ArticleVotes } from "./ArticleVotes";
 import { ErrorComponent } from "./ErrorComponent";
 import { Loading } from "./Loading";
+import { ArticleContent } from "./ArticleContent";
 
 export const ArticlePage = () => {
   const [article, setArticle] = useState({});
@@ -26,17 +27,9 @@ export const ArticlePage = () => {
       });
   }, []);
 
-  if (article.created_at) {
-    article.created_at = article.created_at.slice(0, 10);
-  }
-
   if (isLoading) {
     return <Loading />;
   }
-
-  // if (isError) {
-  //   return <p>Bad request</p>;
-  // }
 
   return (
     <div>
@@ -44,16 +37,7 @@ export const ArticlePage = () => {
         <ErrorComponent message={error} />
       ) : (
         <section>
-          <article className="article">
-            <h1>{article.title}</h1>
-            <p className="topic">{article.topic}</p>
-            <img className="articleImg" src={article.article_img_url} />
-            <div className="articleDetails">
-              <p>written by: {article.author}</p>
-              <p>date posted: {article.created_at}</p>
-            </div>
-            <p className="articleBody">{article.body}</p>
-          </article>
+          <ArticleContent article={article} />
           <ArticleVotes votes={article.votes} article_id={article_id} />
           <CommentList article_id={article_id} />
         </section>

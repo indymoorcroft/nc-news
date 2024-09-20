@@ -55,12 +55,14 @@ export const ArticleList = () => {
         <ErrorComponent message={error} />
       ) : (
         <section>
-          <Expandable>
-            <SortBy
-              searchParams={searchParams}
-              setSearchParams={setSearchParams}
-            />
-          </Expandable>
+          <div className="sort-by-container">
+            <Expandable>
+              <SortBy
+                searchParams={searchParams}
+                setSearchParams={setSearchParams}
+              />
+            </Expandable>
+          </div>
           <ul className="container">
             {articles.map((article) => {
               return (
