@@ -1,3 +1,5 @@
+/* general */
+
 body {
   background-color: #004643;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -8,6 +10,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: rgba(119, 136, 153, 0.411);
 }
 
 /* header */
@@ -37,6 +44,10 @@ header {
   text-decoration: none;
   background-color: #f9bc60;
   color: #001e1d;
+}
+
+.nav-button:hover {
+  background-color: rgba(119, 136, 153, 0.411);
 }
 
 .user {
@@ -136,7 +147,7 @@ h3 {
   color: #001e1d;
   font-size: 28px;
   padding-left: 10%;
-  padding-right: 10px;
+  padding-right: 10%;
   padding-top: 20px;
   padding-bottom: 12px;
   margin: 0px;
@@ -172,27 +183,45 @@ h3 {
   background-color: #abd1c6;
 }
 
+.article-read-more:hover {
+  background-color: rgba(119, 136, 153, 0.411);
+}
+
+.article-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 /* article page */
 
 .article {
   display: flex;
   flex-direction: column;
+  width: 90%;
+  max-width: 1250px;
+  border: 5px solid #001e1d;
+  border-radius: 1%;
+  background-color: #e8e4e6;
+  padding: 10px;
+  margin: 0px;
 }
 
-.articleDetails {
+.article-details {
   display: flex;
   justify-content: space-between;
-  margin: 0px 8px;
+  margin: 0px 5%;
 }
 
-.articleBody {
-  font-size: 24px;
-  padding: 20px 50px;
+.article-body {
+  font-size: 20px;
+  padding: 20px 5%;
+  margin: 0;
 }
 
-.articleImg {
+.article-img {
   display: flex;
-  width: 80%;
+  width: 90%;
   max-width: 1000px;
   height: 50%;
   border-radius: 3%;
@@ -200,13 +229,28 @@ h3 {
   margin: auto;
 }
 
+.article-topic {
+  background-color: #e16162;
+  border: 0.5px solid rgba(0, 0, 0, 0.101);
+  width: 12%;
+  text-align: center;
+  font-size: 1rem;
+  color: #001e1d;
+  margin-left: 5%;
+  margin-bottom: 10px;
+  padding: 6px 4px;
+  border-radius: 8%;
+  text-decoration: none;
+}
+
 h1 {
   justify-self: center;
   font-size: 42px;
   text-align: center;
-  color: #fffffe;
+  color: #001e1d;
   padding-left: 5%;
   padding-right: 5%;
+  margin: 20px 0px;
 }
 
 .date {
@@ -245,6 +289,12 @@ h1 {
 
 .vote {
   display: flex;
+  align-self: flex-start;
+  margin-left: 3.5%;
+  border: 5px solid #001e1d;
+  border-radius: 1%;
+  background-color: #e8e4e6;
+  padding: 10px;
 }
 
 .voteTag {
@@ -268,16 +318,6 @@ h1 {
   padding: 6px;
 }
 
-.article-nav {
-  display: flex;
-  justify-content: space-between;
-}
-
-.article-nav-button {
-  padding: 10px;
-  margin: 0px 10px;
-}
-
 .loading-box {
   display: flex;
   flex-direction: column;
@@ -292,7 +332,7 @@ h1 {
 
 @media (max-width: 480px) {
   header {
-    padding: 0;
+    padding: 0px;
   }
 
   .nav-button {
@@ -336,5 +376,9 @@ h1 {
 
   h3 {
     font-size: 18px;
+  }
+
+  h1 {
+    font-size: 28px;
   }
 }
