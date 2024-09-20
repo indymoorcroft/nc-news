@@ -8,7 +8,7 @@ import { TopicsList } from "./components/TopicsList";
 
 function App() {
   return (
-    <div>
+    <div className="border">
       <Header />
       <Routes>
         <Route exact path="/" element={<ArticleList />} />

@@ -9,7 +9,7 @@ export const Header = () => {
     <header>
       <Nav />
       <p className="user">
-        logged in as: <em>{loggedInUser.username}</em>
+        👤 <em className="username">{loggedInUser.username}</em>
       </p>
     </header>
   );
