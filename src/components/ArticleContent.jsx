@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ArticleVotes } from "./ArticleVotes";
 
 export const ArticleContent = ({ article }) => {
   if (article.created_at) {
@@ -19,6 +20,9 @@ export const ArticleContent = ({ article }) => {
         <p>posted: {article.created_at}</p>
       </div>
       <p className="article-body">{article.body}</p>
+      <div className="vote-article">
+        <ArticleVotes votes={article.votes} article_id={article.article_id} />
+      </div>
     </article>
   );
 };

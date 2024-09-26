@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link/dist/react-router-hash-link.cjs.production";
 import { secondsToString } from "../functions";
+import { ArticleVotes } from "./ArticleVotes";
 
 export const ArticleCard = ({ article, searchParams, setSearchParams }) => {
   const handleClick = ({ target: { innerText } }) => {
@@ -35,9 +37,16 @@ export const ArticleCard = ({ article, searchParams, setSearchParams }) => {
       </div>
       <div className="article-card-extra">
         <div className="votes-comment-count">
-          <p className="article-vote">votes: {article.votes}</p>
+          <ArticleVotes
+            votes={article.votes}
+            article_id={article.article_id}
+            className="article-vote"
+          />
           <p className="article-comment">
-            comment count: {article.comment_count}
+            comments:
+            <HashLink to={`/articles/${article.article_id}#comments`}>
+              <b className="comment-count">{article.comment_count}</b>
+            </HashLink>
           </p>
         </div>
         <Link

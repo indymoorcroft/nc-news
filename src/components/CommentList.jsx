@@ -29,24 +29,26 @@ export const CommentList = ({ article_id }) => {
   }
 
   return (
-    <section className="comment-section">
-      <h2>Comments:</h2>
-      <CommentForm
-        comments={articleComments}
-        setComments={setArticleComments}
-        article_id={article_id}
-      />
-      <ul className="flexbox">
-        {articleComments.map((comment) => {
-          return (
-            <CommentCard
-              key={comment.comment_id}
-              comment={comment}
-              setArticleComments={setArticleComments}
-            />
-          );
-        })}
-      </ul>
-    </section>
+    <div id="comments">
+      <section className="comment-section">
+        <h2>Comments:</h2>
+        <CommentForm
+          comments={articleComments}
+          setComments={setArticleComments}
+          article_id={article_id}
+        />
+        <ul className="flexbox">
+          {articleComments.map((comment) => {
+            return (
+              <CommentCard
+                key={comment.comment_id}
+                comment={comment}
+                setArticleComments={setArticleComments}
+              />
+            );
+          })}
+        </ul>
+      </section>
+    </div>
   );
 };
