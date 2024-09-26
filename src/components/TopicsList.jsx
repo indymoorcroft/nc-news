@@ -31,7 +31,7 @@ export const TopicsList = () => {
         <ErrorComponent message={error} />
       ) : (
         <section>
-          <ul>
+          <ul className="topic-container">
             {topicsList.map((topic, i) => {
               return <TopicCard key={i} topic={topic} />;
             })}

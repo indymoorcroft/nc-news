@@ -1,6 +1,6 @@
 export const SortBy = ({ searchParams, setSearchParams }) => {
-  const handleClick = ({ target: { name } }) => {
-    const sortParams = name.split(" ");
+  const handleChange = ({ target: { value } }) => {
+    const sortParams = value.split(" ");
 
     if (sortParams.length === 2) {
       setSearchParams({
@@ -9,62 +9,22 @@ export const SortBy = ({ searchParams, setSearchParams }) => {
         order: sortParams[1],
       });
     } else {
-      setSearchParams({ ...searchParams, sort_by: name });
+      setSearchParams({ ...searchParams, sort_by: value });
     }
   };
 
   return (
     <>
-      <ul className="sort-by-box">
-        <li className="sort-by-items">
-          <p>Date:</p>
-          <button
-            className="sort-by-button"
-            name="created_at"
-            onClick={handleClick}
-          >
-            ⬆️
-          </button>
-          <button
-            className="sort-by-button"
-            name="created_at asc"
-            onClick={handleClick}
-          >
-            ⬇️
-          </button>
-        </li>
-
-        <li className="sort-by-items">
-          <p>Comment Count:</p>
-          <button
-            className="sort-by-button"
-            name="comment_count"
-            onClick={handleClick}
-          >
-            ⬆️
-          </button>
-          <button
-            className="sort-by-button"
-            name="comment_count asc"
-            onClick={handleClick}
-          >
-            ⬇️
-          </button>
-        </li>
-        <li className="sort-by-items">
-          <p>Votes:</p>
-          <button className="sort-by-button" name="votes" onClick={handleClick}>
-            ⬆️
-          </button>
-          <button
-            className="sort-by-button"
-            name="votes asc"
-            onClick={handleClick}
-          >
-            ⬇️
-          </button>
-        </li>
-      </ul>
+      <label htmlFor="sortby">
+        <select id="sortby" onChange={handleChange}>
+          <option value="created_at desc">date (new-old)</option>
+          <option value="created_at asc">date (old-new)</option>
+          <option value="comment_count asc">comment count (high-low)</option>
+          <option value="comment_count desc">comment count (low-high)</option>
+          <option value="votes asc">votes (high-low)</option>
+          <option value="votes desc">votes (low-high)</option>
+        </select>
+      </label>
     </>
   );
 };

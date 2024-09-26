@@ -3,7 +3,6 @@ import { useSearchParams } from "react-router-dom";
 import { getAllArticles } from "../apiCalls";
 import { ArticleCard } from "./ArticleCard";
 import { SortBy } from "./SortBy";
-import { Expandable } from "./Expandable";
 import { ErrorComponent } from "./ErrorComponent";
 import { Loading } from "./Loading";
 
@@ -26,6 +25,8 @@ export const ArticleList = () => {
       p: page,
     },
   };
+
+  console.log(params);
 
   useEffect(() => {
     getAllArticles({ params: { limit: 9999 } }).then(({ articles }) => {
@@ -56,12 +57,10 @@ export const ArticleList = () => {
       ) : (
         <section>
           <div className="sort-by-container">
-            <Expandable>
-              <SortBy
-                searchParams={searchParams}
-                setSearchParams={setSearchParams}
-              />
-            </Expandable>
+            <SortBy
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+            />
           </div>
           <ul className="container">
             {articles.map((article) => {

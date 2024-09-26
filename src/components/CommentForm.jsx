@@ -32,6 +32,7 @@ export const CommentForm = ({ comments, setComments, article_id }) => {
         <p>posting comment...</p>
       ) : (
         <textarea
+          className="comment-text"
           onChange={handleChange}
           value={commentBody}
           placeholder="Leave a comment"

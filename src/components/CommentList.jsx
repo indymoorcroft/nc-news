@@ -29,7 +29,7 @@ export const CommentList = ({ article_id }) => {
   }
 
   return (
-    <section>
+    <section className="comment-section">
       <h2>Comments:</h2>
       <CommentForm
         comments={articleComments}
