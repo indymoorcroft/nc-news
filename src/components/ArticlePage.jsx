@@ -38,7 +38,6 @@ export const ArticlePage = () => {
       ) : (
         <section className="container">
           <ArticleContent article={article} />
-          <ArticleVotes votes={article.votes} article_id={article_id} />
           <CommentList article_id={article_id} />
         </section>
       )}

@@ -3,13 +3,12 @@ export const SortBy = ({ searchParams, setSearchParams }) => {
     const sortParams = value.split(" ");
 
     if (sortParams.length === 2) {
-      setSearchParams({
-        ...searchParams,
-        sort_by: sortParams[0],
-        order: sortParams[1],
-      });
+      searchParams.set("sort_by", sortParams[0]);
+      searchParams.set("order", sortParams[1]);
+      setSearchParams(searchParams);
     } else {
-      setSearchParams({ ...searchParams, sort_by: value });
+      searchParams.set("sort_by", sortParams[0]);
+      setSearchParams(searchParams);
     }
   };
 

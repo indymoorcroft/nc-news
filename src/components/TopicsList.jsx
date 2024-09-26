@@ -33,7 +33,7 @@ export const TopicsList = () => {
         <section>
           <ul className="topic-container">
             {topicsList.map((topic, i) => {
-              return <TopicCard key={i} topic={topic} />;
+              return <TopicCard key={i} topic={topic} id={i} />;
             })}
           </ul>
         </section>

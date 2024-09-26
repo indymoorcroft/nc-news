@@ -26,8 +26,6 @@ export const ArticleList = () => {
     },
   };
 
-  console.log(params);
-
   useEffect(() => {
     getAllArticles({ params: { limit: 9999 } }).then(({ articles }) => {
       setItemCount(articles);
