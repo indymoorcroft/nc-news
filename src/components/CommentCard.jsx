@@ -58,7 +58,9 @@ export const CommentCard = ({ comment, setArticleComments }) => {
             ) : null}
           </div>
           <div className="commentDetails">
-            <p>{comment.author}</p>
+            <p>
+              <b>{comment.author}</b>
+            </p>
             {timeSinceComment ? <p>{timeSinceComment} ago</p> : <p>just now</p>}
           </div>
         </li>

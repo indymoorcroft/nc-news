@@ -8,15 +8,18 @@ export const ArticleVotes = ({ votes, article_id }) => {
 
   const handleLike = () => {
     clicked
-      ? setArticleVotes(articleVotes - 1)
-      : setArticleVotes(articleVotes + 1);
+      ? setArticleVotes((currVotes) => currVotes - 1)
+      : setArticleVotes((currVotes) => currVotes + 1);
     setError(null);
 
-    patchVote(article_id, clicked).catch((err) => {
-      setArticleVotes(articleVotes - 1);
-      setError("Your vote was not successful. Please try again!");
-    });
-    setClicked(!clicked);
+    patchVote(article_id, clicked)
+      .then(() => {
+        setClicked(!clicked);
+      })
+      .catch((err) => {
+        setArticleVotes((currVotes) => currVotes - 1);
+        setError("Your vote was not successful. Please try again!");
+      });
   };
 
   return (

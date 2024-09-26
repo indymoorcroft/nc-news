@@ -13,7 +13,7 @@ export const Loading = () => {
 
   return (
     <div className="loading-box">
-      <Lottie options={defaultOptions} height={400} width={400} />
+      <Lottie options={defaultOptions} height={300} width={300} />
       <p className="loading-text">Getting you to your destination</p>
     </div>
   );
